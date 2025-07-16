@@ -1,3 +1,4 @@
+import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -19,6 +20,10 @@ export default defineConfig({
         // Strip explicit version from class-variance-authority imports, e.g. "class-variance-authority@0.7.1" → "class-variance-authority"
         find: /^class-variance-authority@\d+\.\d+\.\d+$/,
         replacement: "class-variance-authority",
+      },
+      {
+        find: "@",
+        replacement: path.resolve(__dirname, "src"),
       },
     ],
   },
