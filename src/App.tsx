@@ -5,6 +5,9 @@ import { EventDetail } from './components/EventDetail';
 import { EventReplays } from './components/EventReplays';
 import { OngoingBouts } from './components/OngoingBouts';
 import { StaffManagement } from './components/StaffManagement';
+import { CheckIn } from './components/CheckIn';
+import { BoutDetail } from './components/BoutDetail';
+import { RefereeScoring } from './components/RefereeScoring';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export default function App() {
@@ -25,8 +28,11 @@ export default function App() {
               <Route path="/events" element={<EventManagement />} />
               <Route path="/replays" element={<EventReplays />} />
               <Route path="/live" element={<OngoingBouts />} />
+              <Route path="/live/:boutId" element={<BoutDetail />} />
+              <Route path="/live/:boutId/score" element={<RefereeScoring />} />
               <Route path="/staff" element={<StaffManagement />} />
               <Route path="/events/:id" element={<EventDetail />} />
+              <Route path="/check-in" element={<CheckIn />} />
             </Routes>
 
             {/* Footer */}

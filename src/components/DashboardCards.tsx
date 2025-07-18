@@ -90,6 +90,7 @@ export function DashboardCards() {
               if (card.id === 'replays') navigate('/replays');
               if (card.id === 'ongoing') navigate('/live');
               if (card.id === 'staff') navigate('/staff');
+              if (card.id === 'checkin') navigate('/check-in');
             }}
             className="bg-[var(--charcoal-light)] border-[var(--charcoal-lighter)] hover:border-[var(--boxing-blue)] transition-all duration-300 cursor-pointer group relative overflow-hidden"
           >

@@ -142,9 +142,20 @@
   --color-charcoal-lighter: var(--charcoal-lighter);
 }
 
+.slider-thumb {
+  background-color: yellow;
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  top: -8px;
+  border: 1px solid #a1a1a1;
+}
+
 @layer base {
   * {
-    @apply border-border outline-ring;
+    @apply border-border;
   }
 
   body {

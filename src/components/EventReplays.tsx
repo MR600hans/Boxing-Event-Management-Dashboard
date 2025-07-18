@@ -7,7 +7,9 @@ import boxingPic3 from '@/assets/boxingPic3.jpg';
 import boxingPic4 from '@/assets/boxingPic4.jpg';
 import boxingPic5 from '@/assets/boxingPic5.png';
 import boxingPic6 from '@/assets/boxingPic6.jpg';
+import boxingDemo from '@/assets/boxingDemo.mp4';
 import { useState } from 'react';
+import { VideoEditor } from './VideoEditor';
 
 interface Replay {
   id: number;
@@ -15,6 +17,7 @@ interface Replay {
   title: string;
   fighters: string;
   date: string;
+  videoUrl: string;
 }
 
 const replays: Replay[] = [
@@ -24,6 +27,7 @@ const replays: Replay[] = [
     title: '世界拳王爭霸戰 - 精彩重播',
     fighters: '林育廷 vs 周建宏',
     date: '2025-06-02',
+    videoUrl: boxingDemo,
   },
   {
     id: 2,
@@ -31,6 +35,7 @@ const replays: Replay[] = [
     title: '亞洲新秀挑戰賽 - 精彩重播',
     fighters: '張偉 vs 黃俊',
     date: '2025-07-16',
+    videoUrl: '',
   },
   {
     id: 3,
@@ -38,6 +43,7 @@ const replays: Replay[] = [
     title: '慈善拳擊夜 - 精彩重播',
     fighters: '陳志豪 vs 李國強',
     date: '2025-08-22',
+    videoUrl: '',
   },
   {
     id: 4,
@@ -45,6 +51,7 @@ const replays: Replay[] = [
     title: '女子冠軍賽 - 精彩重播',
     fighters: '王心凌 vs 蔡依林',
     date: '2025-09-11',
+    videoUrl: '',
   },
   {
     id: 5,
@@ -52,6 +59,7 @@ const replays: Replay[] = [
     title: '青少年盃 - 精彩重播',
     fighters: '許凱 vs 林俊傑',
     date: '2025-10-06',
+    videoUrl: '',
   },
   {
     id: 6,
@@ -59,6 +67,7 @@ const replays: Replay[] = [
     title: '跨年特別賽 - 精彩重播',
     fighters: '蕭敬騰 vs 周湯豪',
     date: '2026-01-01',
+    videoUrl: '',
   },
   {
     id: 7,
@@ -66,6 +75,7 @@ const replays: Replay[] = [
     title: '春季邀請賽 - 精彩重播',
     fighters: '林書豪 vs 郭泓志',
     date: '2026-03-13',
+    videoUrl: '',
   },
   {
     id: 8,
@@ -73,6 +83,7 @@ const replays: Replay[] = [
     title: '全國錦標賽 - 精彩重播',
     fighters: '陳信安 vs 吳岱豪',
     date: '2026-04-19',
+    videoUrl: '',
   },
   {
     id: 9,
@@ -80,6 +91,7 @@ const replays: Replay[] = [
     title: '業餘挑戰賽 - 精彩重播',
     fighters: '周思齊 vs 彭政閔',
     date: '2026-05-23',
+    videoUrl: '',
   },
   {
     id: 10,
@@ -87,6 +99,7 @@ const replays: Replay[] = [
     title: '新人王爭奪戰 - 精彩重播',
     fighters: '江宏傑 vs 林昀儒',
     date: '2026-07-01',
+    videoUrl: '',
   },
   {
     id: 11,
@@ -94,6 +107,7 @@ const replays: Replay[] = [
     title: '國際對抗賽 - 精彩重播',
     fighters: '王建民 vs 陳偉殷',
     date: '2026-08-09',
+    videoUrl: '',
   },
   {
     id: 12,
@@ -101,16 +115,35 @@ const replays: Replay[] = [
     title: '菁英邀請賽 - 精彩重播',
     fighters: '郭泓志 vs 張泰山',
     date: '2026-09-15',
+    videoUrl: '',
   },
 ];
 
 export function EventReplays() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
+  const [editingReplay, setEditingReplay] = useState<Replay | null>(null);
+
   const pageSize = 6;
   const pageCount = Math.ceil(replays.length / pageSize);
   const start = (page - 1) * pageSize;
   const visible = replays.slice(start, start + pageSize);
+
+  const handleEditClick = (replay: Replay) => {
+    if(replay.videoUrl) {
+      setEditingReplay(replay);
+    } else {
+      alert('此影片目前無法剪輯。');
+    }
+  };
+
+  const handleBackToList = () => {
+    setEditingReplay(null);
+  };
+
+  if (editingReplay) {
+    return <VideoEditor replay={editingReplay} onBack={handleBackToList} />;
+  }
 
   return (
     <div className="container mx-auto px-6 py-8 text-white">
@@ -129,6 +162,7 @@ export function EventReplays() {
         {visible.map((rep) => (
           <div
             key={rep.id}
+            onClick={() => handleEditClick(rep)}
             className="flex items-center gap-6 bg-[var(--charcoal-light)] border border-[var(--charcoal-lighter)] rounded-lg overflow-hidden hover:border-[var(--boxing-blue)] hover:bg-[var(--charcoal)] transition-all group cursor-pointer"
           >
             {/* Thumbnail */}
