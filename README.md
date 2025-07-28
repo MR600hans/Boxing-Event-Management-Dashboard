@@ -106,4 +106,4 @@
 ├── tailwind.config.js    # Tailwind CSS 設定檔
 ├── tsconfig.json         # TypeScript 設定檔
 └── vite.config.ts        # Vite 設定檔
-``` 
+```

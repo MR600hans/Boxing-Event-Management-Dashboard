@@ -108,9 +108,9 @@ export function OngoingBouts() {
               />
               {/* live pulse */}
               {b.status === 'LIVE' ? (
-                <div className="absolute top-2 left-2 bg-[var(--boxing-red)] text-white text-xs px-2 py-0.5 rounded-full animate-pulse">
-                  LIVE
-                </div>
+              <div className="absolute top-2 left-2 bg-[var(--boxing-red)] text-white text-xs px-2 py-0.5 rounded-full animate-pulse">
+                LIVE
+              </div>
               ) : (
                 <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-full">
                   即將開始
@@ -125,12 +125,12 @@ export function OngoingBouts() {
               </h3>
               {b.status === 'LIVE' ? (
                 <>
-                  <p className="text-gray-400 text-sm mb-1">{b.round}</p>
-                  <div className="text-gray-300 text-sm">
-                    <span className="text-[var(--boxing-red)] font-semibold mr-2">紅 {b.redScore}</span>
-                    :
-                    <span className="text-[var(--boxing-blue)] font-semibold ml-2">藍 {b.blueScore}</span>
-                  </div>
+              <p className="text-gray-400 text-sm mb-1">{b.round}</p>
+              <div className="text-gray-300 text-sm">
+                <span className="text-[var(--boxing-red)] font-semibold mr-2">紅 {b.redScore}</span>
+                :
+                <span className="text-[var(--boxing-blue)] font-semibold ml-2">藍 {b.blueScore}</span>
+              </div>
                 </>
               ) : (
                 <p className="text-yellow-400 text-sm">比賽即將開始，請稍候...</p>

@@ -9,7 +9,7 @@ import boxingPic5 from '@/assets/boxingPic5.png';
 import boxingPic6 from '@/assets/boxingPic6.jpg';
 import boxingDemo from '@/assets/boxingDemo.mp4';
 import { useState } from 'react';
-import { VideoEditor } from './VideoEditor';
+import { MultiCamEditor } from './MultiCamEditor';
 
 interface Replay {
   id: number;
@@ -142,7 +142,7 @@ export function EventReplays() {
   };
 
   if (editingReplay) {
-    return <VideoEditor replay={editingReplay} onBack={handleBackToList} />;
+    return <MultiCamEditor replay={editingReplay} onBack={handleBackToList} />;
   }
 
   return (
